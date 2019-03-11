@@ -219,6 +219,7 @@ static void tagmon(const Arg *arg);
 static void tile(Monitor *);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
+static void togglefollow(const Arg *arg);
 static void toggletag(const Arg *arg);
 static void toggleview(const Arg *arg);
 static void unfocus(Client *c, int setfocus);
@@ -272,6 +273,7 @@ static void (*handler[LASTEvent]) (XEvent *) = {
 };
 static Atom wmatom[WMLast], netatom[NetLast];
 static int running = 1;
+static int followmouse = 1;
 static Cur *cursor[CurLast];
 static Clr **scheme;
 static Display *dpy;
@@ -802,6 +804,9 @@ enternotify(XEvent *e)
 	Client *c;
 	Monitor *m;
 	XCrossingEvent *ev = &e->xcrossing;
+
+	if (!followmouse)
+		return;
 
 	if ((ev->mode != NotifyNormal || ev->detail == NotifyInferior) && ev->window != root)
 		return;
@@ -1825,6 +1830,12 @@ togglefloating(const Arg *arg)
 		resize(selmon->sel, selmon->sel->x, selmon->sel->y,
 			selmon->sel->w, selmon->sel->h, 0);
 	arrange(selmon);
+}
+
+void
+togglefollow(const Arg *arg)
+{
+	followmouse = !followmouse;
 }
 
 void
