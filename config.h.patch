@@ -1,5 +1,5 @@
 --- config.def.h	2020-09-07 16:46:41.163556754 +1000
-+++ config.h	2020-09-07 16:50:04.014394491 +1000
++++ config.h	2020-09-07 17:12:45.049993153 +1000
 @@ -1,25 +1,26 @@
  /* See LICENSE file for copyright and license details. */
  
@@ -79,7 +79,7 @@
  };
  
  #include "gaplessgrid.c"
-@@ -49,21 +71,27 @@ static const float mfact     = 0.55; /*
+@@ -49,21 +71,25 @@ static const float mfact     = 0.55; /*
  static const int nmaster     = 1;    /* number of clients in master area */
  static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
  
@@ -89,8 +89,6 @@
 +    	Monocle,
 +    	GaplessGrid,
 +    	Deck,
-+    	BStack,
-+    	BStackH,
 +};
  static const Layout layouts[] = {
 -	/* symbol     arrange function */
@@ -117,7 +115,7 @@
  	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
  	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
  
-@@ -72,37 +100,77 @@ static const Layout layouts[] = {
+@@ -72,37 +98,75 @@ static const Layout layouts[] = {
  
  /* commands */
  static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -165,8 +163,6 @@
 +	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[Tile]} },
 +	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[Monocle]} },
 +	{ MODKEY,                       XK_r,      setlayout,      {.v = &layouts[Deck]} },
-+	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[BStack]} },
-+	{ MODKEY,                       XK_n,      setlayout,      {.v = &layouts[BStackH]} },
 +
 +	/* Focus manipulation */
 +	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -214,7 +210,7 @@
  	TAGKEYS(                        XK_1,                      0)
  	TAGKEYS(                        XK_2,                      1)
  	TAGKEYS(                        XK_3,                      2)
-@@ -112,9 +180,6 @@ static Key keys[] = {
+@@ -112,9 +176,6 @@ static Key keys[] = {
  	TAGKEYS(                        XK_7,                      6)
  	TAGKEYS(                        XK_8,                      7)
  	TAGKEYS(                        XK_9,                      8)
@@ -224,7 +220,7 @@
  };
  
  /* button definitions */
-@@ -122,15 +187,15 @@ static Key keys[] = {
+@@ -122,15 +183,15 @@ static Key keys[] = {
  static Button buttons[] = {
  	/* click                event mask      button          function        argument */
  	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
