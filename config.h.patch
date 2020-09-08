@@ -1,5 +1,5 @@
 --- config.def.h	2020-09-07 16:46:41.163556754 +1000
-+++ config.h	2020-09-08 13:57:40.699206518 +1000
++++ config.h	2020-09-08 14:24:47.702367250 +1000
 @@ -1,25 +1,26 @@
  /* See LICENSE file for copyright and license details. */
  
@@ -40,7 +40,7 @@
  };
  static const unsigned int alphas[][3]      = {
  	/*               fg      bg        border     */
-@@ -31,14 +32,35 @@ static const unsigned int alphas[][3]
+@@ -31,14 +32,32 @@ static const unsigned int alphas[][3]
  /* tagging */
  static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
  
@@ -52,8 +52,6 @@
 +#define MUSIC_TITLE "music"
 +#define MIXER_TITLE "mixer"
 +#define NET_TITLE "network"
-+#define MON_CLASS "Monitoring"
-+#define CAL_TITLE "calendar"
 +#define DASH_TAG (1 << 8)
  static const Rule rules[] = {
  	/* xprop(1):
@@ -66,6 +64,7 @@
 +	/* class       instance      title          tags mask     isfloating   monitor */
 +	{ "Alacritty", NULL,         SCRATCH_TITLE, 0,            1,           -1 },
 +	{ "Alacritty", NULL,         PROCS_TITLE,   0,            1,           -1 },
++	{ "Surf"     , NULL,         NULL,          0,            1,           -1 },
 +	{ "Alacritty", NULL,         FILES_TITLE,   0,            1,           -1 },
 +	{ "Slack",     NULL,         NULL,          1 << 1,       0,           -1 },
 +	{ "Alacritty", NULL,         TERM_TITLE,    1 << 2,       0,           -1 },
@@ -73,13 +72,11 @@
 +	{ "Alacritty", NULL,         MUSIC_TITLE,   DASH_TAG,     1,           -1 },
 +	{ "Alacritty", NULL,         MIXER_TITLE,   DASH_TAG,     1,           -1 },
 +	{ "Alacritty", NULL,         NET_TITLE,     DASH_TAG,     1,           -1 },
-+    { "Alacritty", NULL,         CAL_TITLE,     DASH_TAG,     1,           -1 },
-+	{ "tabbed",    MON_CLASS,    NULL,          DASH_TAG,     1,           -1 },
 +	{ "Spotify",   NULL,         NULL,          DASH_TAG,     1,           -1 },
  };
  
  #include "gaplessgrid.c"
-@@ -49,60 +71,103 @@ static const float mfact     = 0.55; /*
+@@ -49,60 +68,103 @@ static const float mfact     = 0.55; /*
  static const int nmaster     = 1;    /* number of clients in master area */
  static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
  
@@ -214,7 +211,7 @@
  	TAGKEYS(                        XK_1,                      0)
  	TAGKEYS(                        XK_2,                      1)
  	TAGKEYS(                        XK_3,                      2)
-@@ -112,25 +177,38 @@ static Key keys[] = {
+@@ -112,25 +174,38 @@ static Key keys[] = {
  	TAGKEYS(                        XK_7,                      6)
  	TAGKEYS(                        XK_8,                      7)
  	TAGKEYS(                        XK_9,                      8)
