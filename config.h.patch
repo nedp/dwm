@@ -1,5 +1,5 @@
 --- config.def.h	2020-09-07 16:46:41.163556754 +1000
-+++ config.h	2020-09-08 11:51:23.466002950 +1000
++++ config.h	2020-09-08 13:57:40.699206518 +1000
 @@ -1,25 +1,26 @@
  /* See LICENSE file for copyright and license details. */
  
@@ -214,7 +214,7 @@
  	TAGKEYS(                        XK_1,                      0)
  	TAGKEYS(                        XK_2,                      1)
  	TAGKEYS(                        XK_3,                      2)
-@@ -112,9 +177,6 @@ static Key keys[] = {
+@@ -112,25 +177,38 @@ static Key keys[] = {
  	TAGKEYS(                        XK_7,                      6)
  	TAGKEYS(                        XK_8,                      7)
  	TAGKEYS(                        XK_9,                      8)
@@ -224,25 +224,44 @@
  };
  
  /* button definitions */
-@@ -122,15 +184,15 @@ static Key keys[] = {
+ /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
  static Button buttons[] = {
  	/* click                event mask      button          function        argument */
- 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+-	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 -	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-+	{ ClkLtSymbol,          0,              Button2,        setlayout,      {.v = &layouts[2]} },
++	{ ClkLtSymbol,          0,              Button1,        setlayout,      {.v = &layouts[Tile]} },
++	{ ClkLtSymbol,          MODKEY,         Button1,        setlayout,      {.v = &layouts[Deck]} },
++	{ ClkLtSymbol,          0,              Button2,        setlayout,      {.v = &layouts[Monocle]} },
++	{ ClkLtSymbol,          MODKEY,         Button2,        setlayout,      {.v = &layouts[GaplessGrid]} },
++
++	{ ClkWinTitle,          0,              Button1,        focusstack,     {.i = +1} },
++	{ ClkWinTitle,          ShiftMask,      Button1,        focusstack,     {.i = -1} },
++	{ ClkWinTitle,          MODKEY,         Button1,        setmfact,       {.f = +0.05} },
++	{ ClkWinTitle,          MODKEY,         Button2,        setmfact,       {.f = -0.05} },
  	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
- 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
++	{ ClkWinTitle,          0,              Button3,        pushdown,       {0} },
++	{ ClkWinTitle,          ShiftMask,      Button3,        pushup,         {0} },
++
++	{ ClkStatusText,        0,              Button1,        togglefollow,   {0} },
++	{ ClkStatusText,        0,              Button2,        spawn,          {.v = lockcmd} },
++	{ ClkStatusText,        MODKEY,         Button1,        spawn,          {.v = dmenucmd} },
++	{ ClkStatusText,        MODKEY,         Button2,        spawn,          {.v = scratchcmd} },
++	{ ClkStatusText,        MODKEY,         Button3,        spawn,          {.v = browsercmd} },
++
  	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 -	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 -	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
 -	{ ClkTagBar,            0,              Button1,        view,           {0} },
 -	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
+-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 +	{ ClkClientWin,         MODKEY,         Button3,        togglefloating, {0} },
 +	{ ClkClientWin,         MODKEY,         Button2,        resizemouse,    {0} },
++
 +	{ ClkTagBar,            0,              Button1,        toggleview,     {0} },
 +	{ ClkTagBar,            0,              Button2,        view,           {0} },
- 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
--	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-+	{ ClkTagBar,            MODKEY,         Button2,        toggletag,      {0} },
++	{ ClkTagBar,            ShiftMask,      Button1,        tag,            {0} },
++	{ ClkTagBar,            ShiftMask,      Button2,        toggletag,      {0} },
  };
  
