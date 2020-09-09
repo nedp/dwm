@@ -1,5 +1,5 @@
 --- config.def.h	2020-09-07 16:46:41.163556754 +1000
-+++ config.h	2020-09-08 18:16:17.227996052 +1000
++++ config.h	2020-09-09 10:12:02.398858661 +1000
 @@ -1,25 +1,26 @@
  /* See LICENSE file for copyright and license details. */
  
@@ -226,7 +226,7 @@
  	TAGKEYS(                        XK_1,                      0)
  	TAGKEYS(                        XK_2,                      1)
  	TAGKEYS(                        XK_3,                      2)
-@@ -112,25 +189,38 @@ static Key keys[] = {
+@@ -112,25 +189,39 @@ static Key keys[] = {
  	TAGKEYS(                        XK_7,                      6)
  	TAGKEYS(                        XK_8,                      7)
  	TAGKEYS(                        XK_9,                      8)
@@ -257,6 +257,7 @@
 +
 +	{ ClkStatusText,        0,              Button1,        togglefollow,   {0} },
 +	{ ClkStatusText,        0,              Button2,        spawn,          {.v = lockcmd} },
++	{ ClkStatusText,        0,              Button3,        killclient,     {0} },
 +	{ ClkStatusText,        MODKEY,         Button1,        spawn,          {.v = dmenucmd} },
 +	{ ClkStatusText,        MODKEY,         Button2,        spawn,          {.v = scratchcmd} },
 +	{ ClkStatusText,        MODKEY,         Button3,        spawn,          {.v = browsercmd} },
