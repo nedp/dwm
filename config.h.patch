@@ -1,5 +1,5 @@
 --- config.def.h	2020-09-07 16:46:41.163556754 +1000
-+++ config.h	2020-09-09 10:12:02.398858661 +1000
++++ config.h	2020-09-14 10:59:48.389512413 +1000
 @@ -1,25 +1,26 @@
  /* See LICENSE file for copyright and license details. */
  
@@ -220,7 +220,7 @@
 +
 +	/* Tags and views */
 +	{ MODKEY|ALTKEY,                XK_0,      view,           {.ui = 0 } },
-+	{ MODKEY,                       XK_0,      view,           {.ui = ~MAIN_TAGS } },
++	{ MODKEY,                       XK_0,      view,           {.ui = MAIN_TAGS } },
 +	{ MODKEY,                       XK_0,      setlayout,      {.v = &layouts[GaplessGrid]} },
 +	{ MODKEY,                       XK_Tab,    view,           {0} },
  	TAGKEYS(                        XK_1,                      0)
