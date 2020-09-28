@@ -1,5 +1,5 @@
 --- config.def.h	2020-09-07 16:46:41.163556754 +1000
-+++ config.h	2020-09-14 10:59:48.389512413 +1000
++++ config.h	2020-09-28 12:29:05.016902635 +1000
 @@ -1,25 +1,26 @@
  /* See LICENSE file for copyright and license details. */
  
@@ -158,8 +158,8 @@
 +
 +	/* Spawn */
 +	{ MODKEY|ALTKEY,                XK_j,      spawn,          {.v = browsercmd } },
-+	{ MODKEY|ALTKEY,                XK_k,      spawn,          {.v = termcmd } },
-+	{ MODKEY|ALTKEY,                XK_l,      spawn,          {.v = scratchcmd } },
++	{ MODKEY|ALTKEY,                XK_k,      spawn,          {.v = scratchcmd } },
++	{ MODKEY|ALTKEY,                XK_l,      spawn,          {.v = termcmd } },
 +	{ MODKEY|ALTKEY,                XK_u,      spawn,          {.v = editorcmd } },
 +	{ MODKEY|ALTKEY,                XK_i,      spawn,          {.v = filescmd } },
 +	{ MODKEY|ALTKEY,                XK_p,      spawn,          {.v = procscmd } },
